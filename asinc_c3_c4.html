@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style> 
+    body {
+        background: rgb(232,109,34);
+        background: -moz-radial-gradient(circle, rgba(232,109,34,1) 0%, rgba(142,101,58,1) 49%, rgba(250,220,69,1) 100%);
+        background: -webkit-radial-gradient(circle, rgba(232,109,34,1) 0%, rgba(142,101,58,1) 49%, rgba(250,220,69,1) 100%);
+        background: radial-gradient(circle, rgba(232,109,34,1) 0%, rgba(142,101,58,1) 49%, rgba(250,220,69,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e86d22",endColorstr="#fadc45",GradientType=1);
+    }
+    h2 { 
+        text-align: center;
+        padding: 10px;
+        border: 2px black dashed;
+    }
+    .mono{
+        display: block;
+        margin: 0px auto;
+        padding: 25px;
+        border-radius: 50px;
+    }
+    .actualizar{
+        background-color: darkslategrey;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .jello-horizontal {
+	-webkit-animation: jello-horizontal 3s infinite both;
+	        animation: jello-horizontal 3s infinite both;
+    }
+     @-webkit-keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+    }
+     @keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="container" >
+        <img class="mono jello-horizontal" src="https://cdn.dribbble.com/users/1774513/screenshots/3726127/media/ef86424ae75426acfa624dfadcabda14.jpg?compress=1&resize=400x300" alt="">
+        <h1 class="text-center">Aprobado por Chuck Norris</h1>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary actualizar" type="button">Actualizar</button>
+          </div>
+        <h2 class="text-center"> chiste:<span></span></h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+     const joke = document.querySelector('h2');
+     const boton = document.querySelector('.actualizar');
+     function cargar_frase(){
+        $.getJSON('https://api.chucknorris.io/jokes/random', function (datos){
+            console.log(datos);
+            joke.textContent = datos.value;
+        });
+     }
+     cargar_frase();
+     boton.addEventListener('click', function(){
+        cargar_frase();
+     });
+    </script>
+  </body>
+</html>

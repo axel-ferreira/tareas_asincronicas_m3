@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+      .row{
+        border-style: solid;
+        border-color: black;
+        background-color: aqua;
+      }
+      .col{
+        border-style: solid;
+        border-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">POKEDEX</h1>
+    <!-- Lo primero es mostrar la imagen de los primeros 151 (30) pokemones. -->
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col">
+          <div class="row fila">
+            <div class="col-sm-2">
+              <img id="5" src="http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/5.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col"></div>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-12 col-md-9 " id="listado">
+        <h2>Pokemones</h2>
+        <div class="row" id="mono">
+        </div>
+      </div>
+      <div class="col-6 col-md-3" >
+        <h2>Caracteristicas</h2>
+        <h1 id="nombre"></h1>
+        <p> Peso: <span id="peso"> </span></p>
+        <p> Altura: <span id="altura"> </span></p>
+      </div>
+    </div>
+    
+      <!-- ¿Cómo sabes en qué Pokémon se hizo clic? ¿Quizás podamos darle a cada   Pokémon una identificación única que corresponda con su número en la URL?
+      <img id="2" src="raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/2.png"> -->
+      <!-- add http:// before the website name -->
+      
+      <!-- De modo que cuando se hace clic en la imagen, obtenemos su id y la agregamos al final de esta URL: "http://pokeapi.co/api/v2/pokemon/" y luego hacemos la solicitud ajax con esa URL que construimos.
+        Cree un nuevo commit con el mensaje cual-pokemon en su tarea anterior -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/     bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        
+   <script>
+    const pokemones = document.querySelector('#mono'); 
+    
+      for (let i = 1; i <= 150; i++) {
+      
+        const col = document.createElement('div');
+        col.setAttribute('class', 'col-2')
+
+       const img = document.createElement('img');
+       img.id = i;
+       img.src = "http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png"
+       col.appendChild(img);
+
+       
+       pokemones.appendChild(col);
+      }
+
+      //traer datos de cada pokemon 
+      const poke_img = document.querySelectorAll('img');
+      let nombre = document.querySelector('#nombre')
+      let peso = document.querySelector('#peso')
+      let altura = document.querySelector('#altura')
+
+      for (let pokemon of poke_img) {
+        pokemon.addEventListener('click', function () {
+          $.getJSON('https://pokeapi.co/api/v2/pokemon/' + pokemon.id, function (datos) {
+          console.log(datos)
+          
+            peso.textContent= datos.weight;
+            nombre.textContent = datos.name;
+            altura.textContent = datos.height;
+          })
+        })
+     }
+
+   </script>
+  </body>
+</html>

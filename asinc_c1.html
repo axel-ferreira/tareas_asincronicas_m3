@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       
+        class Libro {
+            constructor(nom, autor, edit, gen){
+                this.nombre = nom;
+                this.autor = autor;
+                this.editorial = edit;
+                this.genero = gen;
+            }
+            mostrarLibro (){
+                return  `${this.nombre} - ${this.autor} ${this.editorial} - ${this.genero} -`;
+            }
+        }
+
+        const libro1 = new Libro ( "la piedra filosofal" , "JK rolin", "pepe" , "Nobela de fantasia")
+        const libro2 = new Libro ( "el perfume", "Franz Kafka" , "Antartica", "Novela")
+        const libro3 = new Libro ( " El diario Anna Frank", "Anna Frank", "nose sabe", "Diario de vida")
+
+        libro1.mostrarLibro()
+        libro2.mostrarLibro()
+        libro3.mostrarLibro()
+
+        let libros = [ libro1 ,libro2, libro3]
+        function filtrarPorAutor ( libros , autor){ 
+        const array = [];
+        for (let lib of libros){
+            if (lib.autor == autor){
+                array.push(lib);
+            } 
+        }
+        return array;
+        
+    }
+    </script>
+</body>
+</html>

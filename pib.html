@@ -1,0 +1,27 @@
+   <script>
+       const fila = document.querySelector (".fila")
+          
+       for (let i=1 ; i<=150 ; i++ ){
+        // 1. Creamos la etiqueta img'
+        const img = document.createElement("img");
+        img.src= "http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png"
+        img.id= i;
+
+        // 2. creamos la etiqueta col-sm-2
+        const col = document.createElement ("div")
+        col.classList.add("col-sm-2")
+
+        // 3. Añadimos a 'img' como hijo de 'col'
+        col.appendChild(img)
+
+        // añadir col al div de clase "fila"
+        fila.appendChild(col)
+
+        console.log(col)   
+    }
+    const pokedex = document.querySelectorAll("img")
+    pokedex.forEach(function(img){
+      console.log(img.id)
+    })
+    $.getJSON "http://pokeapi.co/api/v2/pokemon/"
+    </script> 
